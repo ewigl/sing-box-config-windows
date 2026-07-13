@@ -25,11 +25,25 @@
     ],
     "rules": [
       {
-        "rule_set": ["geosite-cn", "geoip-cn"],
+        "rule_set": ["geosite-cn"],
         "server": "dns_ali"
       },
       {
-        "rule_set": ["geosite-private", "geoip-private"],
+        "rule_set": ["geosite-private"],
+        "server": "dns_local"
+      },
+      {
+        "action": "evaluate",
+        "server": "dns_cloudflare"
+      },
+      {
+        "match_response": true,
+        "rule_set": ["geoip-cn"],
+        "server": "dns_ali"
+      },
+      {
+        "match_response": true,
+        "rule_set": ["geoip-private"],
         "server": "dns_local"
       }
     ],
