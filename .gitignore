@@ -1,10 +1,11 @@
-outs/
+outbounds/
 ui/
 
 box.log
 cache.db
 
 config.json
+outbounds.json
 
 libcronet.dll
 sing-box.exe
