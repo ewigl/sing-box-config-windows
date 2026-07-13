@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Action to perform.
+        required: true
+        type: choice
+        options:
+          - release
+          - build-for-windows
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  get-latest-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      sing_box_version: ${{ steps.get_versions.outputs.sing_box_version }}
+
+    steps:
+      - name: Get latest sing-box version
+        id: get_versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          SING_BOX_V=$(gh api repos/SagerNet/sing-box/releases --jq '.[0].tag_name')
+
+          echo "sing_box_version=$SING_BOX_V" >> "$GITHUB_OUTPUT"
+
+  setup-tag:
+    needs: get-latest-versions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag_name: ${{ steps.tagging.outputs.tag_name }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Generate and push timestamp tag
+        id: tagging
+        run: |
+          TIMESTAMP_TAG="$(date +%s)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git tag $TIMESTAMP_TAG
+          git push origin $TIMESTAMP_TAG
+
+          echo "tag_name=$TIMESTAMP_TAG" >> "$GITHUB_OUTPUT"
+
+  build-windows:
+    needs: [get-latest-versions, setup-tag]
+    uses: ./.github/workflows/build-windows.yml
+    with:
+      sing_box_version: ${{ needs.get-latest-versions.outputs.sing_box_version }}
+      tag: ${{ needs.setup-tag.outputs.tag_name }}
+
+  create-release:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'release' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [get-latest-versions, setup-tag, build-windows]
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+          merge-multiple: true
+          skip-decompress: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.setup-tag.outputs.tag_name }}
+          name: Release ${{ needs.setup-tag.outputs.tag_name }}
+          files: artifacts/*
+          generate_release_notes: false
+          body: |
+            - **Sing Box**: `${{ needs.get-latest-versions.outputs.sing_box_version }}`
+            - **Sing Box Dashboard**: latest

@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+      "type": "api",
+      "tag": "sing-box-api",
+      "listen": "0.0.0.0",
+      "listen_port": 9999,
+      "dashboard": {
+        "enabled": true,
+        "path": "./ui",
+        "download_url": "https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip",
+        "update_interval": "3d"
+      }
+    }
+  ]
+}

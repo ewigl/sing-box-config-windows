@@ -1,0 +1,10 @@
+outs/
+ui/
+
+box.log
+cache.db
+
+config.json
+
+libcronet.dll
+sing-box.exe

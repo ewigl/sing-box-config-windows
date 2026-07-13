@@ -1,0 +1,12 @@
+{
+  "http_clients": [
+    {
+      "tag": "default",
+      "detour": "🚀 Default"
+    },
+    {
+      "tag": "⚡ Direct",
+      "detour": "direct"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "route": {
+    "rule_set": [
+      {
+        "tag": "apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/apple.srs",
+        "http_client": "default"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs",
+        "http_client": "default"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/cn.srs",
+        "http_client": "default"
+      },
+      {
+        "tag": "geoip-private",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/private.srs",
+        "http_client": "default"
+      },
+      {
+        "tag": "geosite-private",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/private.srs",
+        "http_client": "default"
+      },
+      {
+        "tag": "icloud",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/icloud.srs",
+        "http_client": "default"
+      },
+      {
+        "tag": "steam@cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/steam@cn.srs",
+        "http_client": "default"
+      }
+    ],
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "process_name": ["piliplus.exe", "Weixin.exe", "WeChatAppEx.exe"],
+        "outbound": "⚡ Direct"
+      },
+      {
+        "process_name": [
+          "eldenring.exe",
+          "NoRestForTheWicked.exe",
+          "ForzaHorizon4.exe"
+        ],
+        "outbound": "🎮 Games"
+      },
+      {
+        "rule_set": [
+          "geosite-cn",
+          "geoip-cn",
+          "geosite-private",
+          "geoip-private"
+        ],
+        "outbound": "⚡ Direct"
+      },
+      {
+        "rule_set": ["apple", "icloud"],
+        "outbound": "🍎 Apple"
+      },
+      {
+        "rule_set": "steam@cn",
+        "outbound": "🎮 SteamCN"
+      }
+    ],
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns_local",
+    "final": "🚀 Default",
+    "find_process": true
+  }
+}

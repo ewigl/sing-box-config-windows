@@ -1,0 +1,38 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "type": "tls",
+        "tag": "dns_cloudflare",
+        "server": "1.1.1.1",
+        "detour": "🚀 Default"
+      },
+      {
+        "type": "tls",
+        "tag": "dns_google",
+        "server": "8.8.8.8",
+        "detour": "🚀 Default"
+      },
+      {
+        "type": "udp",
+        "tag": "dns_ali",
+        "server": "223.5.5.5"
+      },
+      {
+        "type": "local",
+        "tag": "dns_local"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": "geosite-cn",
+        "server": "dns_ali"
+      }
+    ],
+    "optimistic": {
+      "enabled": true,
+      "timeout": "3d"
+    },
+    "final": "dns_cloudflare"
+  }
+}

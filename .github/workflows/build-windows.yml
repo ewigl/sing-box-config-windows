@@ -1,0 +1,91 @@
+name: Build for Windows
+
+on:
+  workflow_call:
+    inputs:
+      sing_box_version:
+        description: sing-box version.
+        required: true
+        type: string
+      tag:
+        description: Tag name.
+        required: true
+        type: string
+      sing_box_asset_keyword:
+        description: Keyword to match sing-box windows asset.
+        required: false
+        default: sing-box-*-windows-amd64.zip
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Prepare staging directory
+        run: |
+          mkdir -p staging/ui
+
+          cp -r fields staging/
+
+          find . -maxdepth 1 -type f \( -name "*.bat" -o -name "*.vbs" -o -name "*.xml" \) -exec cp {} staging/ \;
+
+      - name: Download and extract dashboard
+        run: |
+
+          curl -L https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip -o ui.zip
+          unzip -q ui.zip -d ui_temp/
+
+          mv ui_temp/*/* staging/ui/
+          rm -rf ui_temp/ ui.zip
+
+      - name: Download and process sing-box
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download ${{ inputs.sing_box_version }} \
+            -R SagerNet/sing-box \
+            -p "${{ inputs.sing_box_asset_keyword }}" \
+            --output sing_box_win.zip
+
+          unzip -j -q sing_box_win.zip -d staging/
+
+          cd staging
+
+          EXE_FILE=$(ls sing-box.exe | head -n 1)
+
+          if [ -n "$EXE_FILE" ]; then
+            # mv "$EXE_FILE" sing-box.exe
+            rm LICENSE
+          else
+            echo "Error: sing-box executable not found!"
+            exit 1
+          fi
+
+          cd ..
+          rm sing_box_win.zip
+
+      - name: Debug staging
+        run: |
+          echo "===== staging ====="
+          find staging -print
+
+      - name: Create zip package
+        id: package
+        run: |
+          FINAL_NAME="windows-sing-box${{ inputs.sing_box_version }}.zip"
+
+          cd staging
+          zip -r "../$FINAL_NAME" .
+          echo "file_name=$FINAL_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          archive: false
+          path: ${{ steps.package.outputs.file_name }}
