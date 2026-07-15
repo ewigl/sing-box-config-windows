@@ -9,7 +9,7 @@
         "enabled": true,
         "path": "./ui",
         "download_url": "https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip",
-        "update_interval": "3d"
+        "update_interval": "1d"
       }
     }
   ]
