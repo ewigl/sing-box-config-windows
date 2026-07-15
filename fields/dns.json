@@ -42,9 +42,8 @@
         "server": "dns_ali"
       },
       {
-        "match_response": true,
-        "rule_set": ["geoip-private"],
-        "server": "dns_local"
+        "action": "route",
+        "server": "dns_cloudflare"
       }
     ],
     "optimistic": {
