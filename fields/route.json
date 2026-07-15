@@ -44,6 +44,13 @@
         "http_client": "default"
       },
       {
+        "tag": "microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/microsoft.srs",
+        "http_client": "default"
+      },
+      {
         "tag": "steam@cn",
         "type": "remote",
         "format": "binary",
@@ -70,6 +77,10 @@
           "ForzaHorizon4.exe"
         ],
         "outbound": "🎮 Games"
+      },
+      {
+        "rule_set": "microsoft",
+        "outbound": "Ⓜ Microsoft"
       },
       {
         "rule_set": [
