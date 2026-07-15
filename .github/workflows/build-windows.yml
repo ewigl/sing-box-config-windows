@@ -7,10 +7,6 @@ on:
         description: sing-box version.
         required: true
         type: string
-      tag:
-        description: Tag name.
-        required: true
-        type: string
       sing_box_asset_keyword:
         description: Keyword to match sing-box windows asset.
         required: false
@@ -69,11 +65,6 @@ jobs:
 
           cd ..
           rm sing_box_win.zip
-
-      - name: Debug staging
-        run: |
-          echo "===== staging ====="
-          find staging -print
 
       - name: Create zip package
         id: package
