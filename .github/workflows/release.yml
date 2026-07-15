@@ -88,4 +88,4 @@ jobs:
           generate_release_notes: false
           body: |
             - **Sing Box**: `${{ needs.get-latest-versions.outputs.sing_box_version }}`
-            - **Sing Box Dashboard**: latest
+            - **Sing Box Dashboard**: `latest`
