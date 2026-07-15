@@ -69,7 +69,7 @@ jobs:
       - name: Create zip package
         id: package
         run: |
-          FINAL_NAME="windows-sing-box${{ inputs.sing_box_version }}.zip"
+          FINAL_NAME="windows-sing-box-${{ inputs.sing_box_version }}.zip"
 
           cd staging
           zip -r "../$FINAL_NAME" .
