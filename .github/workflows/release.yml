@@ -64,7 +64,6 @@ jobs:
     uses: ./.github/workflows/build-windows.yml
     with:
       sing_box_version: ${{ needs.get-latest-versions.outputs.sing_box_version }}
-      tag: ${{ needs.setup-tag.outputs.tag_name }}
 
   create-release:
     if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'release' }}
