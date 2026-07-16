@@ -2,13 +2,6 @@
   "route": {
     "rule_set": [
       {
-        "tag": "apple",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/apple.srs",
-        "http_client": "default"
-      },
-      {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
@@ -34,13 +27,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/private.srs",
-        "http_client": "default"
-      },
-      {
-        "tag": "icloud",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/icloud.srs",
         "http_client": "default"
       },
       {
@@ -90,10 +76,6 @@
           "geoip-private"
         ],
         "outbound": "⚡ Direct"
-      },
-      {
-        "rule_set": ["apple", "icloud"],
-        "outbound": "🍎 Apple"
       },
       {
         "rule_set": "steam@cn",
