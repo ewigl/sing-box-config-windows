@@ -8,8 +8,7 @@
       "dashboard": {
         "enabled": true,
         "path": "./ui",
-        "download_url": "https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip",
-        "update_interval": "1d"
+        "download_url": "https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip"
       }
     }
   ]

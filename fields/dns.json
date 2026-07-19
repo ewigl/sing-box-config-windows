@@ -47,8 +47,7 @@
       }
     ],
     "optimistic": {
-      "enabled": true,
-      "timeout": "3d"
+      "enabled": true
     },
     "final": "dns_cloudflare"
   }
