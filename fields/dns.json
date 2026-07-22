@@ -14,7 +14,7 @@
         "detour": "🚀 Default"
       },
       {
-        "type": "udp",
+        "type": "tls",
         "tag": "dns_ali",
         "server": "223.5.5.5"
       },
