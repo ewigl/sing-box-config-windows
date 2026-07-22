@@ -8,7 +8,10 @@ tasklist | findstr "%PROCESS_NAME%"
 
 if ERRORLEVEL 1 (
     echo sing-box is not running.
+    timeout /t 2
+    exit 0
 ) else (
+    echo Killing process...
     taskkill /F /T /im %PROCESS_NAME%
 )
 
@@ -18,8 +21,9 @@ tasklist | findstr "%PROCESS_NAME%"
 
 if ERRORLEVEL 1 (
     echo sing-box stopped.
+    timeout /t 2
 ) else (
     echo Error occurred, pls try again with admin permission.
+    pause
 )
 
-pause
