@@ -53,6 +53,10 @@
         "action": "hijack-dns"
       },
       {
+        "protocol": "bittorrent",
+        "outbound": "⚡ Direct"
+      },
+      {
         "process_name": ["piliplus.exe", "Weixin.exe", "WeChatAppEx.exe"],
         "outbound": "⚡ Direct"
       },
