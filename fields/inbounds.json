@@ -3,7 +3,7 @@
     {
       "type": "tun",
       "tag": "tun-in",
-      "interface_name": "stun",
+      "interface_name": "sing-tun",
       "address": ["192.168.64.1/30", "fdfe:dcba:9876::1/126"],
       "auto_route": true
     },
