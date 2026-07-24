@@ -1,5 +1,6 @@
 outbounds/
 ui/
+zashboard/
 
 box.log
 cache.db
