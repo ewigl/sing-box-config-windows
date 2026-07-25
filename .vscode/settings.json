@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["fields/*.json", "outbounds/*.json"],
+      "url": ".vscode/schema.json"
+    }
+  ]
+}
