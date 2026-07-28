@@ -26,4 +26,3 @@ if ERRORLEVEL 1 (
     echo Error occurred, pls try again with admin permission.
     pause
 )
-

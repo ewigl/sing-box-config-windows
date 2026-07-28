@@ -46,9 +46,6 @@
         "server": "dns_cloudflare"
       }
     ],
-    "optimistic": {
-      "enabled": true
-    },
     "final": "dns_cloudflare"
   }
 }
