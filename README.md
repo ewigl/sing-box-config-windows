@@ -1,3 +1,3 @@
 # Windows sing-box tun 模式配置文件
 
-![cover](https://github.com/user-attachments/assets/b0ebb708-8088-4c9c-9a35-be3e250cf04d)
+![cover](https://github.com/user-attachments/assets/0a653717-3ca4-467c-8708-ffc3537b4e37)
