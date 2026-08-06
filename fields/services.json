@@ -7,7 +7,7 @@
       "listen_port": 9999,
       "dashboard": {
         "enabled": true,
-        "path": "./ui",
+        "path": "ui",
         "download_url": "https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip"
       }
     }

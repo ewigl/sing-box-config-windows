@@ -2,11 +2,8 @@
   "http_clients": [
     {
       "tag": "default-http-client",
+      "version": 2,
       "detour": "🚀 Default"
-    },
-    {
-      "tag": "direct-http-client",
-      "detour": "⚡ Direct"
     }
   ]
 }
