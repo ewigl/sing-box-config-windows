@@ -4,7 +4,7 @@
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "sing-tun",
-      "address": ["192.168.128.0/24", "fdfe:dcba:9876::0/126"],
+      "address": ["192.168.128.0/24"],
       "auto_route": true
     },
     {

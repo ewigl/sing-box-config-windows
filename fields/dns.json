@@ -3,9 +3,8 @@
     "servers": [
       {
         "type": "tls",
-        "tag": "dns_cloudflare",
-        "server": "1.1.1.1",
-        "detour": "🚀 Default"
+        "tag": "dns_cf",
+        "server": "1.1.1.1"
       },
       {
         "type": "tls",
@@ -19,16 +18,12 @@
     ],
     "rules": [
       {
-        "rule_set": ["geosite-cn"],
+        "rule_set": ["cn"],
         "server": "dns_ali"
       },
       {
-        "rule_set": ["geosite-private"],
-        "server": "dns_local"
-      },
-      {
         "action": "evaluate",
-        "server": "dns_cloudflare"
+        "server": "dns_cf"
       },
       {
         "match_response": true,
@@ -37,9 +32,9 @@
       },
       {
         "action": "route",
-        "server": "dns_cloudflare"
+        "server": "dns_cf"
       }
     ],
-    "final": "dns_cloudflare"
+    "strategy": "ipv4_only"
   }
 }
