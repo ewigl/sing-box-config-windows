@@ -1,19 +1,5 @@
 {
   "route": {
-    "rule_set": [
-      {
-        "tag": ["cn", "microsoft", "steam@cn"],
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/{tag}.srs"
-      },
-      {
-        "tag": "geoip-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs"
-      }
-    ],
     "rules": [
       {
         "action": "sniff"
@@ -23,7 +9,16 @@
         "action": "hijack-dns"
       },
       {
-        "ip_is_private": true,
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "private"
+          },
+          {
+            "ip_is_private": true
+          }
+        ],
         "outbound": "⚡ Direct"
       },
       {
@@ -47,18 +42,41 @@
         "outbound": "Ⓜ Microsoft"
       },
       {
-        "rule_set": ["cn", "geoip-cn"],
-        "outbound": "⚡ Direct"
-      },
-      {
         "rule_set": "steam@cn",
         "outbound": "🎮 SteamCN"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "cn"
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "outbound": "⚡ Direct"
       }
     ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": ["cn", "microsoft", "private", "steam@cn"],
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/{tag}.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs"
+      }
+    ],
+    "final": "🚀 Default",
+    "find_process": true,
     "auto_detect_interface": true,
     "default_domain_resolver": "dns_local",
-    "default_http_client": "default-http-client",
-    "final": "🚀 Default",
-    "find_process": true
+    "default_http_client": "default-http-client"
   }
 }

@@ -6,12 +6,6 @@
       "interface_name": "sing-tun",
       "address": ["192.168.128.0/24", "fdfe:dcba:9876::0/126"],
       "auto_route": true
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "::",
-      "listen_port": 9090
     }
   ]
 }

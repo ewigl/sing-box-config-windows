@@ -4,8 +4,8 @@
       {
         "type": "tls",
         "tag": "dns_cf",
-        "server": "1.1.1.1",
-        "detour": "🚀 Default"
+        "detour": "🚀 Default",
+        "server": "1.1.1.1"
       },
       {
         "type": "tls",
@@ -19,7 +19,11 @@
     ],
     "rules": [
       {
-        "rule_set": ["cn"],
+        "rule_set": "private",
+        "server": "dns_local"
+      },
+      {
+        "rule_set": "cn",
         "server": "dns_ali"
       },
       {
@@ -27,12 +31,11 @@
         "server": "dns_cf"
       },
       {
+        "rule_set": "geoip-cn",
         "match_response": true,
-        "rule_set": ["geoip-cn"],
         "server": "dns_ali"
       },
       {
-        "action": "route",
         "server": "dns_cf"
       }
     ]
