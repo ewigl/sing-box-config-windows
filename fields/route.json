@@ -2,7 +2,7 @@
   "route": {
     "rule_set": [
       {
-        "tag": ["cn", "private", "microsoft", "steam@cn"],
+        "tag": ["cn", "microsoft", "steam@cn"],
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/{tag}.srs"
@@ -12,12 +12,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs"
-      },
-      {
-        "tag": "geoip-private",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/private.srs"
       }
     ],
     "rules": [
@@ -27,6 +21,10 @@
       {
         "protocol": "dns",
         "action": "hijack-dns"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "⚡ Direct"
       },
       {
         "protocol": "bittorrent",
@@ -49,7 +47,7 @@
         "outbound": "Ⓜ Microsoft"
       },
       {
-        "rule_set": ["cn", "geoip-cn", "private", "geoip-private"],
+        "rule_set": ["cn", "geoip-cn"],
         "outbound": "⚡ Direct"
       },
       {
