@@ -4,7 +4,8 @@
       {
         "type": "tls",
         "tag": "dns_cf",
-        "server": "1.1.1.1"
+        "server": "1.1.1.1",
+        "detour": "🚀 Default"
       },
       {
         "type": "tls",
@@ -34,7 +35,6 @@
         "action": "route",
         "server": "dns_cf"
       }
-    ],
-    "strategy": "ipv4_only"
+    ]
   }
 }
