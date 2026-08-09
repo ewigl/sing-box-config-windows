@@ -76,7 +76,7 @@
     "final": "🚀 Default",
     "find_process": true,
     "auto_detect_interface": true,
-    "default_domain_resolver": "dns_local",
+    "default_domain_resolver": "dns_ali",
     "default_http_client": "default-http-client"
   }
 }
