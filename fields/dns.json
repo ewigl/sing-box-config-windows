@@ -4,7 +4,6 @@
       {
         "type": "tls",
         "tag": "dns_cf",
-        "detour": "🚀 Default",
         "server": "1.1.1.1"
       },
       {
