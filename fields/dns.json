@@ -26,17 +26,9 @@
         "server": "dns_ali"
       },
       {
-        "action": "evaluate",
-        "server": "dns_cf"
-      },
-      {
-        "rule_set": "geoip-cn",
-        "match_response": true,
-        "server": "dns_ali"
-      },
-      {
         "server": "dns_cf"
       }
-    ]
+    ],
+    "strategy": "prefer_ipv4"
   }
 }
