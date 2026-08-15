@@ -3,7 +3,7 @@
     {
       "type": "api",
       "tag": "sing-box-api",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 9999,
       "dashboard": {
         "enabled": true,
