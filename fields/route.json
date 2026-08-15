@@ -5,10 +5,6 @@
         "action": "sniff"
       },
       {
-        "protocol": "dns",
-        "action": "hijack-dns"
-      },
-      {
         "type": "logical",
         "mode": "or",
         "rules": [
