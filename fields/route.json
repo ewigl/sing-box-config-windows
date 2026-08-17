@@ -42,16 +42,7 @@
         "outbound": "🎮 SteamCN"
       },
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "rule_set": "cn"
-          },
-          {
-            "rule_set": "geoip-cn"
-          }
-        ],
+        "rule_set": "cn",
         "outbound": "⚡ Direct"
       }
     ],
@@ -61,12 +52,6 @@
         "tag": ["cn", "microsoft", "private", "steam@cn"],
         "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/{tag}.srs"
-      },
-      {
-        "type": "remote",
-        "tag": "geoip-cn",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs"
       }
     ],
     "final": "🚀 Default",
