@@ -20,7 +20,6 @@
       {
         "server": "dns_cf"
       }
-    ],
-    "strategy": "ipv4_only"
+    ]
   }
 }
