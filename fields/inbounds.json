@@ -4,7 +4,7 @@
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "sing-tun",
-      "address": ["192.168.128.8/24"],
+      "address": ["192.168.128.8/24", "fdfe:dcba:9876::8/126"],
       "dns_mode": "hijack",
       "auto_route": true
     }
