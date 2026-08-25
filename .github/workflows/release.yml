@@ -89,3 +89,20 @@ jobs:
           generate_release_notes: false
           body: |
             - **Sing Box**: `${{ needs.get-latest-versions.outputs.sing_box_version }}`
+
+      - name: Keep Latest 5 Releases Only
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          OLD_RELEASES=$(gh release list --limit 99 --json tagName --jq '.[5:] | .[].tagName')
+
+          if [ -z "$OLD_RELEASES" ]; then
+            echo "No old releases to delete."
+            exit 0
+          fi
+
+          while IFS= read -r tag; do
+            [ -z "$tag" ] && continue
+            echo "Deleting release and tag: $tag"
+            gh release delete "$tag" --cleanup-tag -y
+          done <<< "$OLD_RELEASES"
