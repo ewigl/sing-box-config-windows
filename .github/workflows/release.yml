@@ -50,7 +50,7 @@ jobs:
       - name: Generate and push timestamp tag
         id: tagging
         run: |
-          TIMESTAMP_TAG="$(date '+%Y.%m.%d.%H.%M.%S')"
+          TIMESTAMP_TAG="$(date '+%Y%m%d.%H%M%S')"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
