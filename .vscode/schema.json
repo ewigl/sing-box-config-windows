@@ -334,11 +334,22 @@
         "store_fakeip": {
           "type": "boolean"
         },
-        "rdrc_timeout": {
-          "$ref": "#/$defs/Duration"
-        },
         "store_dns": {
           "type": "boolean"
+        },
+        "buffer_size": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "flush_interval": {
+          "$ref": "#/$defs/Duration"
         }
       },
       "additionalProperties": false
@@ -1082,6 +1093,22 @@
                     }
                   ]
                 },
+                "query_client_subnet": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                },
+                "query_dnssec": {
+                  "type": "boolean"
+                },
                 "network": {
                   "anyOf": [
                     {
@@ -1680,6 +1707,9 @@
             },
             "client_subnet": {
               "type": "string"
+            },
+            "remove_client_subnet": {
+              "type": "boolean"
             }
           }
         },
@@ -1718,6 +1748,9 @@
             },
             "client_subnet": {
               "type": "string"
+            },
+            "remove_client_subnet": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -1763,6 +1796,9 @@
             },
             "client_subnet": {
               "type": "string"
+            },
+            "remove_client_subnet": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -3660,6 +3696,9 @@
               "items": {
                 "$ref": "#/$defs/OpenConnectFormEntryOptions"
               }
+            },
+            "on_demand": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -4086,6 +4125,9 @@
             },
             "udp_timeout": {
               "$ref": "#/$defs/UDPTimeout"
+            },
+            "on_demand": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -4509,6 +4551,11 @@
                 }
               ]
             },
+            "listen_port": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            },
             "relay_server_port": {
               "type": "integer",
               "minimum": 0,
@@ -4558,6 +4605,12 @@
                   "additionalProperties": false
                 }
               ]
+            },
+            "taildrop_directory": {
+              "type": "string"
+            },
+            "on_demand": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -4640,6 +4693,9 @@
             },
             "workers": {
               "type": "integer"
+            },
+            "on_demand": {
+              "type": "boolean"
             },
             "detour": {
               "type": "string",
@@ -6601,9 +6657,6 @@
               "type": "string",
               "enum": [
                 "bbr",
-                "bbr_standard",
-                "bbr2",
-                "bbr2_variant",
                 "cubic",
                 "reno"
               ]
@@ -7638,6 +7691,18 @@
                 }
               ]
             },
+            "auto_redirect_tproxy_mark": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
             "auto_redirect_nfqueue": {
               "type": "integer",
               "minimum": 0,
@@ -7897,6 +7962,7 @@
             "stack": {
               "type": "string",
               "enum": [
+                "go",
                 "system",
                 "gvisor",
                 "mixed"
@@ -8691,6 +8757,22 @@
                   }
                 }
               ]
+            },
+            "query_client_subnet": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "query_dnssec": {
+              "type": "boolean"
             },
             "network": {
               "anyOf": [
