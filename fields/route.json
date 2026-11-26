@@ -22,7 +22,11 @@
         "outbound": "⚡ Direct"
       },
       {
-        "process_name": ["piliplus.exe", "Weixin.exe", "WeChatAppEx.exe"],
+        "process_name": [
+          "piliplus.exe",
+          "Weixin.exe",
+          "WeChatAppEx.exe"
+        ],
         "outbound": "⚡ Direct"
       },
       {
@@ -32,6 +36,10 @@
           "ForzaHorizon4.exe"
         ],
         "outbound": "🎮 Games"
+      },
+      {
+        "rule_set": "google",
+        "outbound": "✨ Google"
       },
       {
         "rule_set": "microsoft",
@@ -49,7 +57,13 @@
     "rule_set": [
       {
         "type": "remote",
-        "tag": ["cn", "microsoft", "private", "steam@cn"],
+        "tag": [
+          "cn",
+          "google",
+          "microsoft",
+          "private",
+          "steam@cn"
+        ],
         "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/{tag}.srs"
       }
