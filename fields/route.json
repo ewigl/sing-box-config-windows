@@ -42,6 +42,10 @@
         "outbound": "✨ Google"
       },
       {
+        "rule_set": "imgur",
+        "outbound": "🖼️ Imgur"
+      },
+      {
         "rule_set": "microsoft",
         "outbound": "Ⓜ Microsoft"
       },
@@ -60,6 +64,7 @@
         "tag": [
           "cn",
           "google",
+          "imgur",
           "microsoft",
           "private",
           "steam@cn"
