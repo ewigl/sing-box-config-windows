@@ -50,6 +50,10 @@
         "outbound": "Ⓜ Microsoft"
       },
       {
+        "rule_set": "openai",
+        "outbound": "🎨 OpenAI"
+      },
+      {
         "rule_set": "steam@cn",
         "outbound": "🎮 SteamCN"
       },
@@ -66,6 +70,7 @@
           "google",
           "imgur",
           "microsoft",
+          "openai",
           "private",
           "steam@cn"
         ],
